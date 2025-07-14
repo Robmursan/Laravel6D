@@ -30,6 +30,10 @@
             <td>Precio</td>
             <td><input type="number" name="precio"></td>
         </tr>
+        <tr>
+            <td>Foto</td>
+            <td><input type="file" name="foto"></td>
+        </tr>
        <tr>
         <td><input type="submit" value="Guardar"></td>
        </tr>

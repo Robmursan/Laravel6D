@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('existencia');
             $table->double('precio');
+            $table->string('imgurl');
             $table->timestamps();
         });
 

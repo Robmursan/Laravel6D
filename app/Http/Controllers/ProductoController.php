@@ -106,14 +106,27 @@ class ProductoController extends Controller
            'precio' => 'required|numeric|min:0',
            'existencia' => 'required|integer|min:0',
        ]);
-       $post = new Producto;
 
-       $post->nombre = $request->nombre;
-       $post->descripcion = $request->descripcion;
-       $post->precio = $request->precio;
-       $post->existencia = $request->existencia;
+       //toma el file y lo guarda en la carpeta public/fotos
+       $file = $request->file('foto');
+       $nombre_imagen = $file->getClientOriginalName();
 
-       $post->save();
+       $nombre_carpeta = "img/";
+       $url = "http://localhost:8000/";
+      
+       $imgurl = $url. $nombre_carpeta. $nombre_imagen;
+
+       $almacenar = $request->file('foto')->move($nombre_carpeta, $nombre_imagen);
+
+       $prod = new Producto;
+
+       $prod->nombre = $request->nombre;
+       $prod->descripcion = $request->descripcion;
+       $prod->precio = $request->precio;
+       $prod->existencia = $request->existencia;
+       $prod->imgurl = $imgurl;
+
+       $prod->save();
 
       $msj = "Producto creado correctamente.";
        $productos = Producto::latest("id")->paginate();

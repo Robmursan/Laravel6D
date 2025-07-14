@@ -20,7 +20,8 @@ class ProductoFactory extends Factory
             'nombre'=> $this->faker->text(20),
             'descripcion'=> $this->faker->sentence(),
             'existencia'=> $this->faker->randomNumber(),
-            'precio'=> $this->faker->randomFloat(2)
+            'precio'=> $this->faker->randomFloat(2),
+            'imgurl'=> $this->faker->text(30)
 
         ];
     }
